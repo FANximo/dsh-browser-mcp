@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Browser takeover",
+    "description": "Connects a Playwright-driven Microsoft Edge browser as the 'browser' MCP server, so the agent can open Taobao, read order lists, logistics and product pages, and capture screenshots. Hardened against account risk control: real Edge engine with a persistent signed-in profile, reduced automation fingerprinting, human-like delays between actions, and the browser closes itself when idle. The first browser tool call opens an Edge window; sign in manually by scanning the QR code. The browser profile is kept in the workspace under launcher/profile. Read-only in practice: the agent browses, but does not place orders or pay."
+  }
+}

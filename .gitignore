@@ -1,0 +1,15 @@
+# 安装时生成，不入库
+runtime/
+node_modules/
+
+# 你的登录态（含 cookie，等同账号）与截图，绝不外传
+launcher/profile/
+launcher/output/
+edge-profile/
+
+# 本地杂物
+*.log
+*.zip
+.DS_Store
+Thumbs.db
+package.json.bak-browser

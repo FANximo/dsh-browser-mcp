@@ -1,0 +1,12 @@
+# Placeholder written by the packager. Run install.ps1 once: it rewrites this file
+# with the real absolute paths (node.exe, cli.js, config.json, cwd) of THIS folder.
+- insert:
+    - id: browser-mcp
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: browser
+        transport: stdio
+        command: 'node'
+        args:
+          - './runtime/node_modules/@playwright/mcp/cli.js'
+        failOnStartupError: false

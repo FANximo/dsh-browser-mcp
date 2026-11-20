@@ -1,0 +1,24 @@
+{
+  "browser": {
+    "browserName": "chromium",
+    "cdpEndpoint": "http://127.0.0.1:9222",
+    "cdpTimeout": 30000,
+    "contextOptions": {
+      "locale": "zh-CN",
+      "timezoneId": "Asia/Shanghai"
+    },
+    "initScript": ["./stealth.js"]
+  },
+  "timeouts": {
+    "action": 20000,
+    "navigation": 90000,
+    "settle": 1500,
+    "idle": 0
+  },
+  "outputDir": "./output",
+  "outputMaxSize": 209715200,
+  "console": { "level": "error" },
+  "imageResponses": "allow",
+  "filePaths": "absolute",
+  "webmcp": false
+}

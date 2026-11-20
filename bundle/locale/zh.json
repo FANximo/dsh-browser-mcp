@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "浏览器接管",
+    "description": "以 'browser' 为 serverName 接入 Playwright MCP，让 Agent 用 Microsoft Edge 打开淘宝，读取订单、物流和商品页并截图。已做防风控处理：真实 Edge 内核 + 持久化登录态、削减自动化指纹、动作间加人类化延迟、空闲自动关浏览器。首次调用浏览器工具会弹出 Edge 窗口，需手动扫码登录；浏览器配置保存在工作区 launcher/profile。实际只读：Agent 只浏览页面，不会自动下单或支付。"
+  }
+}
