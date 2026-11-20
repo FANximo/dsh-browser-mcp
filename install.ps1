@@ -75,15 +75,23 @@ if (-not (Test-Node $NodePath)) {
     }
 }
 if (-not (Test-Node $NodePath)) {
+    $runtimeTail = 'dsh-runtimes\dsh-primary-runtime\dependencies\node\bin\node.exe'
     $cands = @(
         "$env:ProgramFiles\nodejs\node.exe",
         "${env:ProgramFiles(x86)}\nodejs\node.exe",
         "$env:LOCALAPPDATA\Programs\nodejs\node.exe"
     )
-    # every DSH bundle runtime on any fixed drive
+    # the runtime that ships with the DeepSeek Harness app: default per-user home
+    # (C:\Users\<name>\.dsh) first, then roaming/local/program-data homes and DSH_HOME
+    $homes = @("$env:USERPROFILE\.dsh", "$env:APPDATA\DSH\home", "$env:LOCALAPPDATA\DSH\home", "$env:ProgramData\DSH\home")
+    if ($env:DSH_HOME) { $homes = @($env:DSH_HOME) + $homes }
+    foreach ($h in $homes) { $cands += (Join-Path $h $runtimeTail) }
+    # every DSH bundle runtime on any fixed drive (X:\DSH\home\..., X:\DSH\..., X:\dsh\home\...)
     foreach ($d in (Get-PSDrive -PSProvider FileSystem | Where-Object { $_.Free -ne $null })) {
-        $cands += (Join-Path $d.Root 'DSH\home\dsh-runtimes\dsh-primary-runtime\dependencies\node\bin\node.exe')
-        $cands += (Join-Path $d.Root 'dsh\home\dsh-runtimes\dsh-primary-runtime\dependencies\node\bin\node.exe')
+        $cands += (Join-Path $d.Root ('DSH\home\' + $runtimeTail))
+        $cands += (Join-Path $d.Root ('dsh\home\' + $runtimeTail))
+        $cands += (Join-Path $d.Root ('DSH\' + $runtimeTail))
+        $cands += (Join-Path $d.Root ('dsh\' + $runtimeTail))
     }
     foreach ($p in $cands) { if (Test-Node $p) { $NodePath = $p; break } }
 }

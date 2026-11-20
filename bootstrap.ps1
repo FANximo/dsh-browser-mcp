@@ -7,7 +7,7 @@
 #   irm https://raw.githubusercontent.com/FANximo/dsh-browser-mcp/main/bootstrap.ps1 | iex
 #
 # Optional overrides (set as environment variables before running):
-#   $env:BMC_VERSION     release version to fetch        (default 1.3.0)
+#   $env:BMC_VERSION     release version to fetch        (default 1.3.1)
 #   $env:BMC_REPO        owner/repo                      (default FANximo/dsh-browser-mcp)
 #   $env:BMC_NODE_PATH   node.exe to use                 (default: autodetect)
 #   $env:BMC_CHECKONLY   "1" to only run the checks
@@ -25,7 +25,7 @@ $BmcExit = 1
   $ProgressPreference = 'SilentlyContinue'
   try { [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 -bor [Net.SecurityProtocolType]::Tls11 } catch {}
 
-  $version = '1.3.0'
+  $version = '1.3.1'
   if ($env:BMC_VERSION) { $version = $env:BMC_VERSION }
   $repo = 'FANximo/dsh-browser-mcp'
   if ($env:BMC_REPO) { $repo = $env:BMC_REPO }
