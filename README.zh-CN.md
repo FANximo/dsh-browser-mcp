@@ -6,6 +6,26 @@
 
 ---
 
+## 零、一条命令安装（推荐）
+
+打开 PowerShell，粘这一行：
+
+```powershell
+irm https://raw.githubusercontent.com/FANximo/dsh-browser-mcp/main/bootstrap.ps1 | iex
+```
+
+它会自动：下载 release 压缩包 → 解到临时目录 → 找 `node.exe` → 把插件注册进你的 DSH profile → 拉起专用 Edge 窗口 → 删掉临时目录。装完重启一次 DeepSeek Harness 即可。
+
+只想先检查环境、不写任何东西：
+
+```powershell
+$env:BMC_CHECKONLY='1'; irm https://raw.githubusercontent.com/FANximo/dsh-browser-mcp/main/bootstrap.ps1 | iex
+```
+
+如果 `raw.githubusercontent.com` 访问不了，就用下面的「解压 + 双击」方式，效果一样。
+
+---
+
 ## 一、准备（缺一不可）
 
 | 需要 | 说明 |

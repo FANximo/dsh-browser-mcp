@@ -11,6 +11,24 @@ Tools show up as `mcp__browser__browser_*` (25 of them: navigate, snapshot, clic
 
 ---
 
+## Install with one command
+
+PowerShell (no clone, no npm):
+
+```powershell
+irm https://raw.githubusercontent.com/FANximo/dsh-browser-mcp/main/bootstrap.ps1 | iex
+```
+
+It downloads the release asset, expands it to a temp folder, finds `node.exe`, registers the bundle in your DSH profile, starts the dedicated Edge window, and deletes the temp folder. Then restart DeepSeek Harness.
+
+Checks only, change nothing:
+
+```powershell
+$env:BMC_CHECKONLY='1'; irm https://raw.githubusercontent.com/FANximo/dsh-browser-mcp/main/bootstrap.ps1 | iex
+```
+
+If `raw.githubusercontent.com` is slow or blocked, use the release asset instead (see [Quick start](#quick-start)) — it is the same thing without the download step.
+
 ## Quick start
 
 1. **Download** `dsh-browser-mcp-portable-v1.3.0.zip` from [Releases](../../releases).
@@ -58,6 +76,7 @@ Command-line equivalents:
 ## Layout
 
 ```
+bootstrap.ps1               one-command installer used by the irm one-liner
 install.cmd / install.ps1   one-click installer (self-deploying)
 runtime-package.json        dependency list of the bundled MCP runtime (reference)
 runtime\                    pre-installed @playwright/mcp 0.0.85 (~18 MB, offline)
